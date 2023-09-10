@@ -1,0 +1,9 @@
+section {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.sidebar {
+    margin-left: 50px;
+}

@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { NgModule } from '@angular/core';
+import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppComponent } from './app.component';
-
+import { PostComponent } from './components/post/post.component';
+import { NgJsonEditorModule } from 'ang-jsoneditor';
 @NgModule({
   declarations: [
-    AppComponent
-  ],
-  imports: [
+     AppComponent,
+     PostComponent
+   ],
+   imports: [
     BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
+    EditorModule
+   ],
+   providers: [],
+   bootstrap: [AppComponent]
+ })
+ export class AppModule { }

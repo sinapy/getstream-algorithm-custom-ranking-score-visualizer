@@ -1,0 +1,70 @@
+/* generate css for
+    post-image
+    post-reactions
+    post-reaction
+    post-reaction-image 
+classes*/
+
+/* Path: getstream-algorithm-custom-ranking-score-visualizer/src/app/components/post/post.component.html */
+/* generate html for
+    post-image
+    post-reactions
+    post-reaction
+    post-reaction-image
+    */
+
+/* generate css for post-image class */
+.post-image {
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.post-reactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.post-reaction {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: row;
+}
+
+.post-reaction-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.post-reaction-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.post-reaction-buttons button{
+    padding-top: 0px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.post-reaction-image {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

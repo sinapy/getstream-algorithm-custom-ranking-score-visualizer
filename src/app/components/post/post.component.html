@@ -1,0 +1,28 @@
+<!-- create a box that has an image on top, and a list of reaction component horizontally ordered under the image -->
+<div  style="height: 459px;">
+    <div>
+        
+    <img [src]="post.image" class="post-image">
+    <div class="date">{{post.date | date}}</div>
+    <button (click)="addADayToDate()">Add a day</button>
+    <button (click)="reduceADayFromDate()">Reduce a day</button>
+    </div>
+    <div>
+        score = {{ post.score }}
+    </div>
+    <div class="post-reactions">
+        <div *ngFor="let reaction of emojis" class="post-reaction">
+            <div class="post-reaction-info">
+                <div (click)="add100Reaction(reaction.name)">{{reaction.icon}}</div>
+                <div>{{post.reaction_count[reaction.name] ?? 0 }}</div>
+            </div>
+            
+            <div class="post-reaction-buttons">
+                <button (click)="addReaction(reaction.name)">+</button>
+                <button (click)="reduceReaction(reaction.name)">-</button>
+            </div>
+            
+        </div>
+    </div>
+    
+</div>
