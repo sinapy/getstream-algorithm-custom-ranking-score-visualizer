@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "getstream-ranking-visualizer"
+  },
+  "targets": {
+    "getstream-ranking-visualizer": {
+      "hosting": {
+        "getstream-algorithm-custom-ranking-score-visualizer": [
+          "getstream-ranking-visualizer"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "hosting": [
+    {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "getstream-algorithm-custom-ranking-score-visualizer",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

@@ -13,8 +13,19 @@ export class PostService {
   calculateScore(post: any): any {
     const decayScore = this.linearDecayFunction(post.date);
     const reactionScore = this.reactionScore(post);
+    const reactionScoreWithDecay = this.reactionDecayFunction(reactionScore, post.date);
 
-    return decayScore * reactionScore;
+    return decayScore * reactionScoreWithDecay;
+  }
+
+  reactionDecayFunction(reactionScore: number, date: any) {
+    const reactionDecay = this.linearDecayFunction(date, 'reaction_decay');
+
+    const pureReaction = reactionScore - 1;
+
+    const decayScore = pureReaction * reactionDecay;
+
+    return decayScore + 1;
   }
 
   reactionScore(post: any) {
@@ -27,18 +38,18 @@ export class PostService {
   }
 
 
-  linearDecayFunction(date: Date) {
+  linearDecayFunction(date: Date, function_name: string = 'linear_decay') {
     const now = new Date();
     const dayDiff = Math.ceil((now.getTime() - date.getTime()) / (1000 * 3600 * 24));
     let decayScore = 0;
-    if (dayDiff < this.score_function.linear_decay.skip) {
+    if (dayDiff < this.score_function[function_name].skip) {
       decayScore = 1;
     }
-    else if (dayDiff < this.score_function.linear_decay.duraction_to_reach_decay + this.score_function.linear_decay.skip) {
-      decayScore = 1 - (1 - this.score_function.linear_decay.decay) * (dayDiff - this.score_function.linear_decay.skip) / this.score_function.linear_decay.duraction_to_reach_decay;
+    else if (dayDiff < this.score_function[function_name].duraction_to_reach_decay + this.score_function[function_name].skip) {
+      decayScore = 1 - (1 - this.score_function[function_name].decay) * (dayDiff - this.score_function[function_name].skip) / this.score_function[function_name].duraction_to_reach_decay;
     }
     else {
-      decayScore = this.score_function.linear_decay.decay;
+      decayScore = this.score_function[function_name].decay;
     }
 
     return decayScore;
@@ -46,7 +57,7 @@ export class PostService {
 
   constructor() { }
 
-  public score_function = {
+  public score_function : any = {
     "linear_decay": {
       "decay": 0.05,
       "duraction_to_reach_decay": 6,

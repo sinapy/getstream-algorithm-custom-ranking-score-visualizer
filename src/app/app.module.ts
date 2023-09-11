@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { AppComponent } from './app.component';
 import { PostComponent } from './components/post/post.component';
-import { NgJsonEditorModule } from 'ang-jsoneditor';
 @NgModule({
   declarations: [
      AppComponent,
