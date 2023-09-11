@@ -1,9 +1,19 @@
 <section>
-  <div>
+  <div *ngIf="!toggleValue">
     <app-post *ngFor="let post of posts" [post]="post" (updatePosts)="orderPosts()"></app-post>
+  </div>
+  <div *ngIf="toggleValue">
+    User 1
+    <app-post *ngFor="let post of user1_posts" [post]="post" (updatePosts)="orderPosts()"></app-post>
+  </div>
+  <div *ngIf="toggleValue">
+    User 2
+    <app-post *ngFor="let post of user2_posts" [post]="post" (updatePosts)="orderPosts()"></app-post>
   </div>
   <div class="sidebar">
     Hello World
     <div id="editor" style="height: 500px; width: 500px;"></div>
+    <label for="">Use two users</label>
+    <input type="checkbox" [(ngModel)]="toggleValue">
   </div>
 </section>

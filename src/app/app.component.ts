@@ -10,10 +10,17 @@ import * as ace from 'ace-builds';
 export class AppComponent {
   title = 'getstream-algorithm-custom-ranking-score-visualizer';
 
-  posts : any[];
+  toggleValue: boolean = false;
+
+  posts: any[] = [];
+
+  user1_posts : any[];
+  user2_posts : any[];
 
   constructor(private postService: PostService) {
-    this.posts = this.postService.posts;  
+    this.posts = this.postService.posts;
+    this.user1_posts = this.postService.user1_posts;
+    this.user2_posts = this.postService.user2_posts;
   }
 
   ngOnInit() {
@@ -24,7 +31,8 @@ export class AppComponent {
   orderPosts() {
     this.postService.updateScores();
     this.posts.sort((a, b) => this.sortF(b,a));
-    console.log('done');
+    this.user1_posts.sort((a, b) => this.sortF(b,a));
+    this.user2_posts.sort((a, b) => this.sortF(b,a));
   }
 
   sortF(ob1:any,ob2:any) {

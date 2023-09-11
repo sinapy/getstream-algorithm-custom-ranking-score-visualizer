@@ -2,6 +2,7 @@ section {
     display: flex;
     flex-direction: row;
     height: 100%;
+    gap: 40px;
 }
 
 .sidebar {

@@ -42,11 +42,11 @@ export class PostService {
     const now = new Date();
     const dayDiff = Math.ceil((now.getTime() - date.getTime()) / (1000 * 3600 * 24));
     let decayScore = 0;
-    if (dayDiff < this.score_function[function_name].skip) {
+    if (dayDiff < this.score_function[function_name].skipDays) {
       decayScore = 1;
     }
-    else if (dayDiff < this.score_function[function_name].duraction_to_reach_decay + this.score_function[function_name].skip) {
-      decayScore = 1 - (1 - this.score_function[function_name].decay) * (dayDiff - this.score_function[function_name].skip) / this.score_function[function_name].duraction_to_reach_decay;
+    else if (dayDiff < this.score_function[function_name].duraction_to_reach_decay + this.score_function[function_name].skipDays) {
+      decayScore = 1 - (1 - this.score_function[function_name].decay) * (dayDiff - this.score_function[function_name].skipDays) / this.score_function[function_name].duraction_to_reach_decay;
     }
     else {
       decayScore = this.score_function[function_name].decay;
@@ -61,12 +61,12 @@ export class PostService {
     "linear_decay": {
       "decay": 0.05,
       "duraction_to_reach_decay": 6,
-      "skip": 1,
+      "skipDays": 1,
     },
     "reaction_decay": {
       "decay": 1,
       "duraction_to_reach_decay": 1,
-      "skip": 0,
+      "skipDays": 0,
     },
     "reaction_score": {
       "reaction_multiplier": 0.005,
@@ -99,7 +99,32 @@ export class PostService {
       reaction_count: {} as any,
       image: 'https://dummyimage.com/300x300&text=Post%205',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:51.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300&text=Post%206',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:52.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300&text=Post%207',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:53.000Z')
     }
+  ]
+
+  public user1_posts : any[] = [
+    this.posts[0],
+    this.posts[1],
+    this.posts[2],
+    this.posts[5],
+    this.posts[6],
+  ]
+
+  public user2_posts : any[] = [
+    this.posts[3],
+    this.posts[4],
+    this.posts[1],
+    this.posts[6],
   ]
 
 
