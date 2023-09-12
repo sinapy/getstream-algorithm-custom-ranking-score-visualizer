@@ -16,7 +16,7 @@ export class PostComponent {
     {id: 3, name: 'heart', icon: '❤️'},
     {id: 4, name: 'star', icon: '⭐'},
     {id: 5, name: 'rocket', icon: '🚀'},
-    {id: 6, name: 'tada', icon: '🎉'},
+    {id: 6, name: 'click', icon: '👆'},
   ]
 
   constructor() {

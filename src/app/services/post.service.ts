@@ -32,7 +32,15 @@ export class PostService {
     let initial = 1
     for (let reaction in post.reaction_count) {
       post.reaction_count[reaction] = post.reaction_count[reaction] || 0;
-      initial += this.score_function.reaction_score.reaction_multiplier * post.reaction_count[reaction];
+      if (reaction === 'click')
+      {
+        initial += this.score_function.click_score.click_multiplier * post.reaction_count[reaction];
+      }
+      else 
+      {
+        initial += this.score_function.reaction_score.reaction_multiplier * post.reaction_count[reaction];
+      }
+      
     }
     return initial;
   }
@@ -42,14 +50,14 @@ export class PostService {
     const now = new Date();
     const dayDiff = Math.ceil((now.getTime() - date.getTime()) / (1000 * 3600 * 24));
     let decayScore = 0;
-    if (dayDiff < this.score_function[function_name].skip) {
+    if (dayDiff < this.score_function[function_name].skip_days_before_starting_to_decay) {
       decayScore = 1;
     }
-    else if (dayDiff < this.score_function[function_name].duraction_to_reach_decay + this.score_function[function_name].skip) {
-      decayScore = 1 - (1 - this.score_function[function_name].decay) * (dayDiff - this.score_function[function_name].skip) / this.score_function[function_name].duraction_to_reach_decay;
+    else if (dayDiff < this.score_function[function_name].days_to_reach_final_score + this.score_function[function_name].skip_days_before_starting_to_decay) {
+      decayScore = 1 - (1 - this.score_function[function_name].decay_final_score) * (dayDiff - this.score_function[function_name].skip_days_before_starting_to_decay) / this.score_function[function_name].days_to_reach_final_score;
     }
     else {
-      decayScore = this.score_function[function_name].decay;
+      decayScore = this.score_function[function_name].decay_final_score;
     }
 
     return decayScore;
@@ -59,17 +67,20 @@ export class PostService {
 
   public score_function : any = {
     "linear_decay": {
-      "decay": 0.05,
-      "duraction_to_reach_decay": 6,
-      "skip": 1,
+      "decay_final_score": 0.05,
+      "days_to_reach_final_score": 6,
+      "skip_days_before_starting_to_decay": 1,
     },
     "reaction_decay": {
-      "decay": 1,
-      "duraction_to_reach_decay": 1,
-      "skip": 0,
+      "decay_final_score": 1,
+      "days_to_reach_final_score": 1,
+      "skip_days_before_starting_to_decay": 0,
     },
     "reaction_score": {
       "reaction_multiplier": 0.005,
+    },
+    "click_score": {
+      "click_multiplier": 0.001,
     }
 
   }
@@ -77,27 +88,27 @@ export class PostService {
   public posts : any[] = [
     {
       reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300&text=Post%201',
+      image: 'https://dummyimage.com/300x300/cca/000&text=Post%201',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:47.000Z')
     },
     {
       reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300&text=Post%202',
+      image: 'https://dummyimage.com/300x300/cc1/333&text=Post%202',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:48.000Z')
     },
     {
       reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300&text=Post%203',
+      image: 'https://dummyimage.com/300x300/1cc/333&text=Post%203',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:49.000Z')
     },
     {
       reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300&text=Post%204',
+      image: 'https://dummyimage.com/300x300/4ad/333&text=Post%204',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:50.000Z')
     },
     {
       reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300&text=Post%205',
+      image: 'https://dummyimage.com/300x300/7ad/333&text=Post%205',
       date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:51.000Z')
     }
   ]
