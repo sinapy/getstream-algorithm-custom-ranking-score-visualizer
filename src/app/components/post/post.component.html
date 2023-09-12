@@ -3,7 +3,7 @@
     <div>
         
     <img [src]="post.image" class="post-image">
-    <div class="date">{{post.date | date}}</div>
+    <div class="date">Published Date: {{post.date | date}}</div>
     <button (click)="addADayToDate()">Add a day</button>
     <button (click)="reduceADayFromDate()">Reduce a day</button>
     </div>
