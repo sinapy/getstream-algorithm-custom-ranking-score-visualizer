@@ -36,18 +36,11 @@ export class PostService {
       {
         initial += this.score_function.click_score.click_multiplier * post.reaction_count[reaction];
       }
-      else if (reaction === 'watchtime')
-      {
-        initial += this.score_function.watch_time_score.watch_time_multiplier * post.reaction_count[reaction];
-      }
-      else if (reaction === 'postduration')
-      {
-        initial += this.score_function.post_duration_time_score.post_duration_time_multiplier * post.reaction_count[reaction];
-      }
       else 
       {
         initial += this.score_function.reaction_score.reaction_multiplier * post.reaction_count[reaction];
       }
+      
     }
     return initial;
   }
@@ -70,11 +63,10 @@ export class PostService {
     return decayScore;
   }
 
-
   this_day : string; 
   this_month : string;
   this_year : string;
-  
+
   constructor() { 
     this.this_day = new Date().getDate().toString();
     this.this_month = (new Date().getMonth() + 1).toString();
@@ -125,17 +117,11 @@ export class PostService {
     },
     "click_score": {
       "click_multiplier": 0.001,
-    },
-    "watch_time_score": {
-      "watch_time_multiplier": 0.00001,
-    },
-    "post_duration_time_score": {
-      "post_duration_time_multiplier": 0.00001,
     }
 
   }
 
-  public posts : any[] = []
+  public posts : any[] = [];
 
 
 }
