@@ -63,7 +63,43 @@ export class PostService {
     return decayScore;
   }
 
-  constructor() { }
+  this_day : string; 
+  this_month : string;
+  this_year : string;
+
+  constructor() { 
+    this.this_day = new Date().getDate().toString();
+    this.this_month = (new Date().getMonth() + 1).toString();
+    this.this_year = new Date().getFullYear().toString();
+
+    this. posts = [
+      {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/cca/000&text=Post%201',
+      date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:47.000Z')
+      },
+      {
+        reaction_count: {} as any,
+        image: 'https://dummyimage.com/300x300/cc1/333&text=Post%202',
+        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:48.000Z')
+      },
+      {
+        reaction_count: {} as any,
+        image: 'https://dummyimage.com/300x300/1cc/333&text=Post%203',
+        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:49.000Z')
+      },
+      {
+        reaction_count: {} as any,
+        image: 'https://dummyimage.com/300x300/4ad/333&text=Post%204',
+        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:50.000Z')
+      },
+      {
+        reaction_count: {} as any,
+        image: 'https://dummyimage.com/300x300/7ad/333&text=Post%205',
+        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:51.000Z')
+      }
+  ]
+  }
 
   public score_function : any = {
     "linear_decay": {
@@ -85,33 +121,7 @@ export class PostService {
 
   }
 
-  public posts : any[] = [
-    {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/cca/000&text=Post%201',
-      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:47.000Z')
-    },
-    {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/cc1/333&text=Post%202',
-      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:48.000Z')
-    },
-    {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/1cc/333&text=Post%203',
-      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:49.000Z')
-    },
-    {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/4ad/333&text=Post%204',
-      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:50.000Z')
-    },
-    {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/7ad/333&text=Post%205',
-      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:51.000Z')
-    }
-  ]
+  public posts : any[] = [];
 
 
 }
