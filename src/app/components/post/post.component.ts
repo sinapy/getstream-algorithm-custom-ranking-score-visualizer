@@ -15,8 +15,9 @@ export class PostComponent {
     {id: 2, name: 'laugh', icon: '😂'},
     {id: 3, name: 'heart', icon: '❤️'},
     {id: 4, name: 'star', icon: '⭐'},
-    {id: 5, name: 'rocket', icon: '🚀'},
-    {id: 6, name: 'click', icon: '👆'},
+    {id: 5, name: 'watchtime', icon: 'WT⏱️'},
+    {id: 6, name: 'postduration', icon: 'PD🕒'},
+    {id: 7, name: 'click', icon: '👆'},
   ]
 
   constructor() {
@@ -85,6 +86,7 @@ export class PostComponent {
       date.setSeconds(this.post.date.getSeconds());
       this.post.date = date;
     this.updatePosts.emit(true);
+
   }
 
   date1IsEarlierThanDate2(date1: Date, date2: Date) : boolean {
