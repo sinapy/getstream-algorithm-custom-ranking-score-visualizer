@@ -36,18 +36,11 @@ export class PostService {
       {
         initial += this.score_function.click_score.click_multiplier * post.reaction_count[reaction];
       }
-      else if (reaction === 'watchtime')
-      {
-        initial += this.score_function.watch_time_score.watch_time_multiplier * post.reaction_count[reaction];
-      }
-      else if (reaction === 'postduration')
-      {
-        initial += this.score_function.post_duration_time_score.post_duration_time_multiplier * post.reaction_count[reaction];
-      }
       else 
       {
         initial += this.score_function.reaction_score.reaction_multiplier * post.reaction_count[reaction];
       }
+      
     }
     return initial;
   }
@@ -70,44 +63,7 @@ export class PostService {
     return decayScore;
   }
 
-
-  this_day : string; 
-  this_month : string;
-  this_year : string;
-  
-  constructor() { 
-    this.this_day = new Date().getDate().toString();
-    this.this_month = (new Date().getMonth() + 1).toString();
-    this.this_year = new Date().getFullYear().toString();
-
-    this. posts = [
-      {
-      reaction_count: {} as any,
-      image: 'https://dummyimage.com/300x300/cca/000&text=Post%201',
-      date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:47.000Z')
-      },
-      {
-        reaction_count: {} as any,
-        image: 'https://dummyimage.com/300x300/cc1/333&text=Post%202',
-        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:48.000Z')
-      },
-      {
-        reaction_count: {} as any,
-        image: 'https://dummyimage.com/300x300/1cc/333&text=Post%203',
-        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:49.000Z')
-      },
-      {
-        reaction_count: {} as any,
-        image: 'https://dummyimage.com/300x300/4ad/333&text=Post%204',
-        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:50.000Z')
-      },
-      {
-        reaction_count: {} as any,
-        image: 'https://dummyimage.com/300x300/7ad/333&text=Post%205',
-        date: new Date(this.this_year + '-' + this.this_month + '-' + (new Date()).getDate() + 'T19:15:51.000Z')
-      }
-  ]
-  }
+  constructor() { }
 
   public score_function : any = {
     "linear_decay": {
@@ -125,17 +81,37 @@ export class PostService {
     },
     "click_score": {
       "click_multiplier": 0.001,
-    },
-    "watch_time_score": {
-      "watch_time_multiplier": 0.00001,
-    },
-    "post_duration_time_score": {
-      "post_duration_time_multiplier": 0.00001,
     }
 
   }
 
-  public posts : any[] = []
+  public posts : any[] = [
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/cca/000&text=Post%201',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:47.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/cc1/333&text=Post%202',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:48.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/1cc/333&text=Post%203',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:49.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/4ad/333&text=Post%204',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:50.000Z')
+    },
+    {
+      reaction_count: {} as any,
+      image: 'https://dummyimage.com/300x300/7ad/333&text=Post%205',
+      date: new Date('2023-09-' + (new Date()).getDate() + 'T19:15:51.000Z')
+    }
+  ]
 
 
 }
